@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orbit — Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">◈</span><span>orbit</span></div>
+      <div class="profile">
+        <div class="avatar violet" id="profileAvatar">?</div>
+        <div class="profile-copy"><strong id="currentUser">Not logged in</strong><small id="profileStatus">Your account</small></div>
+        <button class="icon-btn" id="switchUser" title="Switch account" aria-label="Switch account">⌄</button>
+        <button class="icon-btn logout-btn" id="logoutButton" title="Log out" aria-label="Log out" hidden>↪</button>
+      </div>
+      <div class="section-heading"><span>MESSAGES</span></div>
+      <div class="nav-list">
+        <button class="nav-item active" data-action="inbox"><span>✉</span> All messages</button>
+        <button class="nav-item" data-action="history"><span>◷</span> Message history</button>
+        <button class="nav-item" data-action="recent"><span>↗</span> Recent chats</button>
+        <button class="nav-item" data-action="suggest"><span>✧</span> Discover people</button>
+        <button class="nav-item" data-action="communities"><span>◎</span> Communities</button>
+        <button class="nav-item" data-action="rooms"><span>▦</span> Group chats</button>
+      </div>
+      <div class="section-heading friends-heading"><span>DIRECT MESSAGES</span><button class="tiny-btn" id="addFriend" title="Add a contact">＋</button></div>
+      <div id="friendsList" class="friends-list"><p class="empty-side">Your conversations will appear here</p></div>
+      <div class="sidebar-bottom"><span class="status-dot" id="connectionDot"></span><span id="connectionText">Connecting…</span></div>
+    </aside>
+
+    <main class="chat-panel">
+      <header class="chat-header">
+        <div class="chat-person"><div class="avatar blue" id="chatAvatar">◈</div><div><strong id="chatName">Your messages</strong><small id="chatSubtitle">Choose a conversation to get started</small></div></div>
+        <div class="header-actions">
+          <span class="header-status"><span class="status-dot"></span> Online</span>
+          <button class="contact-action" id="blockButton" type="button" hidden>Block</button>
+        </div>
+      </header>
+      <div class="toolbar"><span id="viewTitle">ALL MESSAGES</span><span class="toolbar-note">PRIVATE CONVERSATIONS</span></div>
+      <section class="messages" id="messages">
+        <div class="welcome-card"><div class="welcome-icon">✦</div><h2>Your space to connect.</h2><p>Pick someone from your conversations or add a contact to start chatting.</p></div>
+      </section>
+      <form class="composer" id="messageForm">
+        <button type="button" class="attach-btn" id="recipientButton" title="Choose a person" aria-label="Choose a person">＋</button>
+        <input id="messageInput" autocomplete="off" placeholder="Choose a conversation first…" disabled>
+        <span class="composer-hint">Press Enter to send</span>
+        <button class="send-btn" type="submit" disabled id="sendButton" aria-label="Send message">➤</button>
+      </form>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="authModal">
+    <div class="auth-card">
+      <div class="brand auth-brand"><span class="brand-mark">◈</span><span>orbit</span></div>
+      <span class="eyebrow">A LITTLE SPACE TO CONNECT</span>
+      <h2>Welcome to Orbit.</h2>
+      <p>Sign in to continue your conversations, or create an account to get started.</p>
+      <form id="authForm">
+        <label for="username">USERNAME</label>
+        <input id="username" maxlength="30" placeholder="e.g. taarushi" required autocomplete="username">
+        <label for="password" class="password-label">PASSWORD</label>
+        <input id="password" type="password" minlength="6" maxlength="64" placeholder="Enter your password" required autocomplete="current-password">
+        <div class="auth-actions"><button type="button" class="secondary-btn" id="registerButton">Create account</button><button type="submit" class="primary-btn">Log in <span>→</span></button></div>
+      </form>
+      <div class="auth-hint" id="authHint">New to Orbit? Create an account to begin.</div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
